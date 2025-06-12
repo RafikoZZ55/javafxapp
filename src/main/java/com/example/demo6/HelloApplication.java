@@ -17,6 +17,7 @@ public class HelloApplication extends Application {
         RockPaperScissorsPage rpsPage = new RockPaperScissorsPage();
         CalculatorPage calculatorPage = new CalculatorPage();
         TaskPage taskPage = new TaskPage();
+        WeatherPage weatherPage = new WeatherPage();
 
         MenuBar menuBar = new MenuBar();
         Menu menu = new Menu("Narzędzia");
@@ -25,8 +26,9 @@ public class HelloApplication extends Application {
         MenuItem rpsItem = new MenuItem("Papier Kamień Nożyce");
         MenuItem calculatorItem = new MenuItem("Kalkulator");
         MenuItem taskItem = new MenuItem("Zadania");
+        MenuItem weatherItem = new MenuItem("Pogoda");
 
-        menu.getItems().addAll(stopwatchItem, rpsItem, calculatorItem, taskItem);
+        menu.getItems().addAll(stopwatchItem, rpsItem, calculatorItem, taskItem, weatherItem);
         menuBar.getMenus().add(menu);
 
         root.setTop(menuBar);
@@ -36,6 +38,7 @@ public class HelloApplication extends Application {
         rpsItem.setOnAction(e -> root.setCenter(rpsPage));
         calculatorItem.setOnAction(e -> root.setCenter(calculatorPage));
         taskItem.setOnAction(e -> root.setCenter(taskPage));
+        weatherItem.setOnAction(e -> root.setCenter(weatherPage)); // <--- show weather page
 
         Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().add(getClass().getResource("/com/example/demo6/styles.css").toExternalForm());
