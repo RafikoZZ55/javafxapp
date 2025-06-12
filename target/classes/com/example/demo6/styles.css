@@ -1,184 +1,170 @@
-/* Root container with dark gradient background */
 .root {
     -fx-font-family: "Segoe UI", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
-    -fx-background-color: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+    -fx-background-color:#18171a;
     -fx-padding: 25;
 }
 
-/* Main container with dark glass morphism effect */
-.vbox {
-    -fx-background-color: rgba(30, 30, 46, 0.8);
-    -fx-padding: 30;
+
+.vbox, .hbox, .grid-pane, .border-pane {
+    -fx-background-color: rgba(30, 15, 25, 0.92);
+    -fx-padding: 25;
     -fx-spacing: 15;
-    -fx-border-color: rgba(108, 117, 125, 0.4);
-    -fx-border-width: 1;
-    -fx-border-radius: 15;
-    -fx-background-radius: 15;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 20, 0, 0, 5);
+    -fx-start-margin: 10;
+    -fx-background-radius: 18;
+    -fx-effect: dropshadow(gaussian, #e75480AA, 18, 0.2, 0, 6);
 }
 
-/* Dark themed label styling */
-.label {
+
+.label, .title-label {
     -fx-font-size: 20px;
     -fx-font-weight: 600;
-    -fx-text-fill: #e9ecef;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 2, 0, 0, 1);
+    -fx-text-fill: #f8f6f8;
+    -fx-effect: dropshadow(gaussian, #e75480AA, 2, 0, 0, 1);
 }
 
-/* Dark text field with focus states */
+
 .text-field {
     -fx-font-size: 14px;
     -fx-padding: 12 15;
-    -fx-border-color: #495057;
+    -fx-border-color: #e75480;
     -fx-border-width: 2;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
-    -fx-background-color: #343a40;
-    -fx-text-fill: #f8f9fa;
-    -fx-prompt-text-fill: #6c757d;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
-    -fx-transition: all 0.2s ease;
+    -fx-background-color: #18171a;
+    -fx-text-fill: #f8f6f8;
+    -fx-prompt-text-fill: #bdbdbd;
+    -fx-effect: dropshadow(gaussian, #e7548033, 5, 0, 0, 2);
 }
-
 .text-field:focused {
-    -fx-border-color: #6f42c1;
-    -fx-background-color: #3d4147;
-    -fx-effect: dropshadow(gaussian, rgba(111, 66, 193, 0.5), 8, 0, 0, 2);
+    -fx-border-color: #ff3860;
+    -fx-background-color: #2d0b18;
+    -fx-effect: dropshadow(gaussian, #ff386088, 8, 0, 0, 2);
 }
 
-/* Dark gradient button with purple accent */
+
 .button {
-    -fx-background-color: linear-gradient(135deg, #6f42c1 0%, #5a2d91 100%);
-    -fx-text-fill: #ffffff;
+    -fx-background-color: #ff3860 ;
+    -fx-text-fill: #f8f6f8;
     -fx-font-weight: 600;
     -fx-font-size: 14px;
     -fx-padding: 12 20;
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0, 0, 3);
-    -fx-transition: all 0.2s ease;
+    -fx-effect: dropshadow(gaussian, #e75480AA, 8, 0, 0, 3);
+    -fx-border-color: #ff3860;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+    -fx-focus-color: #e75480;
+    -fx-faint-focus-color: transparent;
 }
-
 .button:hover {
-    -fx-background-color: linear-gradient(135deg, #5a2d91 0%, #4c1d75 100%);
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 12, 0, 0, 5);
-    -fx-scale-x: 1.02;
-    -fx-scale-y: 1.02;
+    -fx-background-color: linear-gradient(135deg, #ff3860 0%, #e75480 100%);
+    -fx-effect: dropshadow(gaussian, #ff3860AA, 12, 0, 0, 5);
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
 }
-
 .button:pressed {
-    -fx-background-color: linear-gradient(135deg, #4c1d75 0%, #3e1659 100%);
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 5, 0, 0, 2);
+    -fx-background-color: linear-gradient(135deg, #b11226 0%, #e75480 100%);
+    -fx-effect: dropshadow(gaussian, #b11226AA, 5, 0, 0, 2);
     -fx-scale-x: 0.98;
     -fx-scale-y: 0.98;
 }
 
-/* Dark themed list view */
-.list-view {
-    -fx-border-color: #495057;
-    -fx-border-width: 1;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-    -fx-background-color: #212529;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
-}
 
-/* Dark list cell styling */
+.list-view {
+    -fx-border-color: #e75480;
+    -fx-border-width: 1.5;
+    -fx-background-radius: 12;
+    -fx-background-color: #18171a;
+}
 .list-cell {
     -fx-padding: 8 15;
     -fx-background-color: transparent;
     -fx-border-color: transparent;
-    -fx-text-fill: #e9ecef;
+    -fx-text-fill: #f8f6f8;
 }
-
 .list-cell:selected {
-    -fx-background-color: rgba(111, 66, 193, 0.3);
-    -fx-background-radius: 5;
+    -fx-background-color: rgba(231, 84, 128, 0.25);
+    -fx-background-radius: 7;
 }
-
 .list-cell:hover {
-    -fx-background-color: rgba(52, 58, 64, 0.6);
-    -fx-background-radius: 5;
+    -fx-background-color: rgba(255, 56, 96, 0.18);
+    -fx-background-radius: 7;
 }
-
-/* Dark action buttons within list cells */
-.list-cell > .button {
-    -fx-background-color: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
-    -fx-text-fill: #ffffff;
+.list-cell > .button, .list-cell > .button.delete {
+    -fx-background-color: linear-gradient(135deg, #e75480 0%, #ff3860 100%);
+    -fx-text-fill: #f8f6f8;
     -fx-font-size: 12px;
-    -fx-font-weight: 500;
+    -fx-font-weight: 600;
     -fx-padding: 6 12;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 4, 0, 0, 2);
+    -fx-border-color: #ff3860;
+    -fx-border-width: 1;
+}
+.list-cell > .button:hover, .list-cell > .button.delete:hover {
+    -fx-background-color:#e75480 ;
+    -fx-text-fill: #f8f6f8;
+}
+.list-cell > .button:pressed, .list-cell > .button.delete:pressed {
+    -fx-background-color:#b11226 ;
 }
 
-.list-cell > .button:hover {
-    -fx-background-color: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 6, 0, 0, 3);
+
+.menu-bar {
+    -fx-background-color: #18171a;
+    -fx-border-color: #e75480;
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 12 24;
+    -fx-background-radius: 0;
+    -fx-effect: dropshadow(gaussian, #e75480AA, 10, 0.2, 0, 2);
+    -fx-margin: 18 18 24 18;
 }
 
-/* Dark delete button variant */
-.list-cell > .button.delete {
-    -fx-background-color: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+.menu {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f8f6f8;
+    -fx-font-size: 16px;
+    -fx-padding: 0 12;
 }
 
-.list-cell > .button.delete:hover {
-    -fx-background-color: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+.menu-item {
+    -fx-background-color: #2d0b18;
+    -fx-text-fill: #f8f6f8;
+    -fx-font-size: 15px;
+    -fx-background-radius: 8;
+}
+.menu-item:focused, .menu-item:hover {
+    -fx-background-color: #e75480;
+    -fx-text-fill: #18171a;
 }
 
-/* Dark utility classes */
-.secondary-button {
-    -fx-background-color: linear-gradient(135deg, #6c757d 0%, #545b62 100%);
+
+.tab-pane {
+    -fx-background-color: #18171a;
+}
+.tab-header-background {
+    -fx-background-color:  #18171a;
+}
+.tab {
+    -fx-font-size: 15px;
+    -fx-background-color: #2d0b18;
+    -fx-text-fill: #f8f6f8;
+}
+.tab:selected {
+    -fx-background-color: #e75480;
+    -fx-text-fill: #18171a;
 }
 
-.secondary-button:hover {
-    -fx-background-color: linear-gradient(135deg, #545b62 0%, #454d55 100%);
-}
 
-.success-button {
-    -fx-background-color: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
-}
-
-.success-button:hover {
-    -fx-background-color: linear-gradient(135deg, #1e7e34 0%, #155724 100%);
-}
-
-.warning-button {
-    -fx-background-color: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
-    -fx-text-fill: #212529;
-}
-
-.warning-button:hover {
-    -fx-background-color: linear-gradient(135deg, #e0a800 0%, #d39e00 100%);
-}
-
-.danger-button {
-    -fx-background-color: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-}
-
-.danger-button:hover {
-    -fx-background-color: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
-}
-
-/* Additional dark theme elements */
-.dark-card {
-    -fx-background-color: rgba(33, 37, 41, 0.9);
-    -fx-background-radius: 10;
-    -fx-padding: 20;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
-}
-
-.dark-text {
-    -fx-text-fill: #e9ecef;
-}
-
-.muted-text {
-    -fx-text-fill: #6c757d;
-}
-
-.accent-text {
-    -fx-text-fill: #6f42c1;
-}
+.rose-text { -fx-text-fill: #e75480; }
+.red-text { -fx-text-fill: #ff3860; }
+.gray-text { -fx-text-fill: #bdbdbd; }
+.palewhite-text { -fx-text-fill: #f8f6f8; }
+.black-bg { -fx-background-color: #18171a; }
+.rose-bg { -fx-background-color: #e75480; }
+.red-bg { -fx-background-color: #ff3860; }
+.gray-bg { -fx-background-color: #bdbdbd; }
+.palewhite-bg { -fx-background-color: #f8f6f8; }

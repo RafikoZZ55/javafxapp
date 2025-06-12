@@ -1,49 +1,45 @@
 package com.example.demo6;
 
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.control.ContentDisplay;
-import javafx.util.Callback;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.geometry.Insets;
 
-public class HelloController {
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    private TextField taskInput;
-
-    @FXML
-    private ListView<Task> taskList;
-
-    @FXML
-    private Button addButton;
-
-    private ObservableList<Task> tasks = FXCollections.observableArrayList();
-
+public class TaskPage extends VBox {
+    private final TextField taskInput = new TextField();
+    private final Button addButton = new Button("Add Task");
+    private final Button clearCompletedButton = new Button("Clear Completed");
+    private final ListView<Task> taskList = new ListView<>();
+    private final ObservableList<Task> tasks = FXCollections.observableArrayList();
     private int editingIndex = -1;
 
-    @FXML
-    public void initialize() {
+    public TaskPage() {
+        Label title = new Label("Task List");
+        title.getStyleClass().add("title-label");
+        this.getStyleClass().add("vbox");
+        taskInput.getStyleClass().add("text-field");
+        addButton.getStyleClass().add("button");
+        clearCompletedButton.getStyleClass().add("button");
+        taskList.getStyleClass().add("list-view");
+
+        HBox inputBox = new HBox(10, taskInput, addButton, clearCompletedButton);
+        inputBox.setPadding(new Insets(10));
+        inputBox.setSpacing(10);
+        inputBox.getStyleClass().add("hbox");
+
         taskList.setItems(tasks);
-        taskList.setCellFactory(new Callback<ListView<Task>, ListCell<Task>>() {
-            @Override
-            public ListCell<Task> call(ListView<Task> listView) {
-                return new TaskCell();
-            }
-        });
+        taskList.setCellFactory(listView -> new TaskCell());
+
+        addButton.setOnAction(e -> onAddTask());
+        clearCompletedButton.setOnAction(e -> onClearCompleted());
+
+        this.setSpacing(15);
+        this.setPadding(new Insets(25));
+        this.getChildren().addAll(title, inputBox, taskList);
     }
 
-    @FXML
-    protected void onAddTask() {
+    private void onAddTask() {
         String taskText = taskInput.getText();
         if (taskText != null && !taskText.trim().isEmpty()) {
             if (editingIndex >= 0) {
@@ -51,7 +47,7 @@ public class HelloController {
                 task.setText(taskText);
                 tasks.set(editingIndex, task);
                 editingIndex = -1;
-                addButton.setText("Add Task");
+                addButton.setText("Add");
             } else {
                 tasks.add(new Task(taskText));
             }
@@ -59,26 +55,28 @@ public class HelloController {
         }
     }
 
-    @FXML
-    protected void onClearCompleted() {
+    private void onClearCompleted() {
         tasks.removeIf(Task::isCompleted);
         if (editingIndex >= 0 && (editingIndex >= tasks.size() || tasks.get(editingIndex).isCompleted())) {
             editingIndex = -1;
-            addButton.setText("Add Task");
+            addButton.setText("Add");
             taskInput.clear();
         }
     }
 
     private class TaskCell extends ListCell<Task> {
-        private HBox hbox = new HBox(10);
-        private CheckBox checkBox = new CheckBox();
-        private Label label = new Label();
-        private Button editButton = new Button("Edit");
-        private Button deleteButton = new Button("Delete");
+        private final HBox hbox = new HBox(10);
+        private final CheckBox checkBox = new CheckBox();
+        private final Label label = new Label();
+        private final Button editButton = new Button("Edit");
+        private final Button deleteButton = new Button("Delete");
 
         public TaskCell() {
-            super();
+            editButton.getStyleClass().add("button");
+            deleteButton.getStyleClass().addAll("button", "delete");
+
             hbox.getChildren().addAll(checkBox, label, editButton, deleteButton);
+            hbox.getStyleClass().add("hbox");
 
             checkBox.setOnAction(event -> {
                 Task task = getItem();
@@ -93,7 +91,7 @@ public class HelloController {
                 Task task = getItem();
                 if (task != null) {
                     taskInput.setText(task.getText());
-                    addButton.setText("Save Task");
+                    addButton.setText("Save");
                 }
             });
 
@@ -103,7 +101,7 @@ public class HelloController {
                     tasks.remove(index);
                     if (editingIndex == index) {
                         editingIndex = -1;
-                        addButton.setText("Add Task");
+                        addButton.setText("Add");
                         taskInput.clear();
                     }
                 }
